@@ -1,0 +1,30 @@
+{
+  "calibration": {
+    "examples": 1521,
+    "nll": 2.408670412091187,
+    "ppl": 11.119167401920006
+  },
+  "distribution": {
+    "forget_calibration_ks": 0.8209703786626864,
+    "forget_calibration_wasserstein": 0.895829985304124,
+    "loss_membership_advantage": 0.9093775728391114,
+    "loss_membership_auc": 0.9546887864195557
+  },
+  "forget": {
+    "examples": 888,
+    "nll": 1.5128404267870628,
+    "ppl": 4.539606919909198
+  },
+  "method": "simnpo",
+  "retain": {
+    "examples": 1778,
+    "nll": 1.5969118088886092,
+    "ppl": 4.9377601077415125
+  },
+  "target_diagnostics": {
+    "fraction_above_target": 0.23986486486486486,
+    "fraction_below_target": 0.615990990990991,
+    "fraction_inside_band": 0.14414414414414414
+  },
+  "task": "muse"
+}

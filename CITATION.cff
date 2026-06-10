@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the H2DF manuscript."
+title: "H2DF: A Unified Framework for Calibrated Language-Model Unlearning"
+type: software
+authors:
+  - family-names: Yao
+    given-names: Jupiter
+version: 0.1.0
+date-released: 2026-06-09
+license: MIT
+abstract: "Reference implementation and evaluation artifacts for calibrated target-distribution language-model unlearning."
+keywords:
+  - machine unlearning
+  - large language models
+  - privacy
+  - MUSE
+  - TOFU

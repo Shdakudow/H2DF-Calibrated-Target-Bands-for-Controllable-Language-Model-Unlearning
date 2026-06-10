@@ -1,0 +1,28 @@
+{
+  "calibration": {
+    "examples": 380,
+    "nll": 1.1924148668044885,
+    "ppl": 3.2950286628354757
+  },
+  "forget": {
+    "examples": 200,
+    "nll": 1.5474670016765595,
+    "ppl": 4.699551138349634,
+    "qa_exact_match": 0.01,
+    "qa_examples": 200,
+    "qa_token_f1": 0.36866677723620134
+  },
+  "method": "h2df",
+  "retain": {
+    "examples": 3420,
+    "nll": 1.1534632666656006,
+    "ppl": 3.1691495358251207,
+    "qa_exact_match": 0.016374269005847954,
+    "qa_examples": 3420,
+    "qa_token_f1": 0.4122840448141265
+  },
+  "target_diagnostics": {
+    "fraction_below_target": 0.425
+  },
+  "task": "tofu"
+}

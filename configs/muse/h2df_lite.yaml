@@ -1,0 +1,87 @@
+experiment:
+  task: muse
+  seed: 42
+
+model:
+  name: muse-bench/MUSE-News_target
+  tokenizer_name: NousResearch/Llama-2-7b-hf
+  dtype: bfloat16
+  gradient_checkpointing: true
+  trust_remote_code: false
+
+lora:
+  rank: 8
+  alpha: 16
+  dropout: 0.0
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+# Export the selected MUSE corpus splits to JSONL. Every row must contain
+# "text"; "domain" is recommended for matched conditional calibration.
+data:
+  forget:
+    path: data/muse/forget.jsonl
+    split: train
+  retain:
+    path: data/muse/retain1.jsonl
+    split: train
+  retain_eval:
+    path: data/muse/retain2.jsonl
+    split: train
+  calibration:
+    path: data/muse/holdout_calibration.jsonl
+    split: train
+  calibration_eval:
+    path: data/muse/holdout_evaluation.jsonl
+    split: train
+  text_column: text
+  domain_column: domain
+
+calibration:
+  output_dir: artifacts/muse
+  batch_size: 4
+  bins: 4
+  min_bin_size: 20
+  rho_low: 0.5
+  rho_high: 0.9
+
+method:
+  name: h2df_lite
+  tau: 0.25
+  gamma: 0.5
+  lora_lambda: 0.0001
+  retain_beta: 1.0
+  retain_every: 10
+  beta: 0.1
+  simnpo_gamma: 0.0
+  rmu_layer: 14
+  steering_coefficient: 20.0
+  control_seed_offset: 10000
+
+training:
+  batch_size: 1
+  retain_batch_size: 1
+  gradient_accumulation_steps: 4
+  max_length: 1024
+  max_steps: 50
+  learning_rate: 0.00002
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+  scheduler: cosine
+  warmup_steps: 25
+  mixed_precision: bf16
+  num_workers: 0
+
+evaluation:
+  batch_size: 4
+
+output:
+  dir: outputs/muse/news/h2df_lite/pilot_seed_42
+  log_every: 10
+  save_every: 10

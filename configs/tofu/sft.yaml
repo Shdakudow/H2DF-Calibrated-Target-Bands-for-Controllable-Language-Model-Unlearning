@@ -1,0 +1,68 @@
+experiment:
+  task: tofu
+  seed: 42
+
+model:
+  name: Qwen/Qwen2.5-1.5B-Instruct
+  dtype: bfloat16
+  gradient_checkpointing: true
+  trust_remote_code: false
+
+lora:
+  rank: 16
+  alpha: 32
+  dropout: 0.0
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+data:
+  forget:
+    path: locuslab/TOFU
+    name: forget05
+    split: train
+  retain:
+    path: locuslab/TOFU
+    name: retain95
+    split: train
+  calibration:
+    path: locuslab/TOFU
+    name: retain95
+    split: "train[:100]"
+  question_column: question
+  answer_column: answer
+  prompt_template: "Question: {question}\nAnswer:"
+
+calibration:
+  output_dir: artifacts/tofu
+
+method:
+  name: sft
+
+training:
+  batch_size: 4
+  gradient_accumulation_steps: 4
+  max_length: 512
+  max_steps: 1000
+  learning_rate: 0.0001
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+  scheduler: cosine
+  warmup_steps: 50
+  mixed_precision: bf16
+  num_workers: 0
+
+evaluation:
+  batch_size: 4
+  max_new_tokens: 64
+  generate_qa: true
+
+output:
+  dir: outputs/tofu/sft/seed_42
+  log_every: 10
+  save_every: 250

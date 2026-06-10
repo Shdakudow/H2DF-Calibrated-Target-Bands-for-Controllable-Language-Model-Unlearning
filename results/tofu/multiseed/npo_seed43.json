@@ -1,0 +1,28 @@
+{
+  "calibration": {
+    "examples": 380,
+    "nll": 1.1569571201248388,
+    "ppl": 3.180241445363708
+  },
+  "forget": {
+    "examples": 200,
+    "nll": 1.4229304756270722,
+    "ppl": 4.14926195238154,
+    "qa_exact_match": 0.01,
+    "qa_examples": 200,
+    "qa_token_f1": 0.34736302196673335
+  },
+  "method": "npo",
+  "retain": {
+    "examples": 3420,
+    "nll": 1.1234106255795981,
+    "ppl": 3.0753251194736495,
+    "qa_exact_match": 0.015497076023391813,
+    "qa_examples": 3420,
+    "qa_token_f1": 0.39280687429839617
+  },
+  "target_diagnostics": {
+    "fraction_below_target": 0.695
+  },
+  "task": "tofu"
+}

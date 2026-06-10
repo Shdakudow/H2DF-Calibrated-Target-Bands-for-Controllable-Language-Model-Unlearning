@@ -1,0 +1,30 @@
+{
+  "calibration": {
+    "examples": 200,
+    "nll": 2.4302785009145738,
+    "ppl": 11.36204597960329
+  },
+  "distribution": {
+    "forget_calibration_ks": 0.92,
+    "forget_calibration_wasserstein": 1.3229211010038855,
+    "loss_membership_advantage": 0.9696500000000001,
+    "loss_membership_auc": 0.9848250000000001
+  },
+  "forget": {
+    "examples": 200,
+    "nll": 1.1073573999106885,
+    "ppl": 3.0263503843158834
+  },
+  "method": "h2df_lite_retain",
+  "retain": {
+    "examples": 200,
+    "nll": 1.19487315133214,
+    "ppl": 3.303138745176249
+  },
+  "target_diagnostics": {
+    "fraction_above_target": 0.075,
+    "fraction_below_target": 0.905,
+    "fraction_inside_band": 0.02
+  },
+  "task": "muse"
+}
